@@ -23,13 +23,13 @@ class SongService {
   }
 
   static getMostPlayedSongs() {
-    const songs = SongModel.getSongs();
+    const unsortedSongs = SongModel.getSongs();
 
-    if (songs.length === 0) {
+    if (unsortedSongs.length === 0) {
       throw new ResponseError(404, "Songs Empty");
     }
 
-    const sortedSongs = songs.sort((a, b) =>
+    const sortedSongs = unsortedSongs.sort((a, b) =>
       a.playedCount > b.playedCount ? -1 : 1
     );
 

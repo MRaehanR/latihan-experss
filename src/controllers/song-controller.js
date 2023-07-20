@@ -24,9 +24,9 @@ class SongController {
 
   static getMostPlayedSongs(req, res, next) {
     try {
-      const songs = SongService.getMostPlayedSongs();
+      const mostPlayedSongs = SongService.getMostPlayedSongs();
 
-      res.success("Success get most played songs", songs);
+      res.success("Success get most played songs", mostPlayedSongs);
     } catch (error) {
       next(error);
     }

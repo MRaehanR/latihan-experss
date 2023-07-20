@@ -2,24 +2,12 @@ import generateID from "../utils/generatorID.js";
 
 class SongModel {
   static songs = [
-    // {
-    //   title: "Rayuan Perempuan Gila",
-    //   artists: ["Nadin Amizah"],
-    //   genres: ["Indonesian Pop"],
-    //   playedCount: 10,
-    // },
-    // {
-    //   title: "Lagu Bagus 2",
-    //   artists: ["Nadin Amizah"],
-    //   genres: ["Indonesian Pop"],
-    //   playedCount: 30,
-    // },
-    // {
-    //   title: "Lagu Bagus",
-    //   artists: ["Samy"],
-    //   genres: ["Indonesian Pop"],
-    //   playedCount: 20,
-    // },
+    {
+      title: "Rayuan Perempuan Gila",
+      artists: ["Nadin Amizah"],
+      genres: ["Indonesian Pop"],
+      playedCount: 20,
+    },
   ];
 
   constructor(songID, title, artists, playedCount) {
@@ -30,7 +18,7 @@ class SongModel {
   }
 
   static getSongs() {
-    return this.songs;
+    return [...this.songs];
   }
 
   static addSong(title, artists, playedCount) {
