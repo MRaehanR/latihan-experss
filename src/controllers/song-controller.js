@@ -22,6 +22,17 @@ class SongController {
     }
   }
 
+  static removeSong(req, res, next) {
+    try {
+      const title = req.query.title;
+      const removedSong = SongService.removeSong(title);
+
+      res.success("Success remove song", removedSong);
+    } catch (error) {
+      next(error);
+    }
+  }
+
   static getMostPlayedSongs(req, res, next) {
     try {
       const mostPlayedSongs = SongService.getMostPlayedSongs();

@@ -17,9 +17,28 @@ class SongService {
     artists = [capitalizeWords(...artists)];
 
     const addedSong = SongModel.addSong(title, artists, playedCount);
-    const newSongs = SongModel.getSongs();
+    const songs = SongModel.getSongs();
 
-    return { addedSong, newSongs };
+    return { addedSong, songs };
+  }
+
+  static removeSong(title) {
+    title = title.split(" ").join("").toLowerCase();
+
+    const songIndex = SongModel.getSongs().findIndex((song) => {
+      song = song.title.split(" ").join("").toLowerCase();
+
+      return song === title;
+    });
+
+    if (songIndex == -1) {
+      throw new ResponseError(404, "Song Not Found");
+    }
+
+    const removedSongs = SongModel.removeSong();
+    const songs = SongModel.getSongs();
+
+    return { removedSongs, songs };
   }
 
   static getMostPlayedSongs() {

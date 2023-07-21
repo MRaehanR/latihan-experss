@@ -29,10 +29,9 @@ class SongModel {
     return newSong;
   }
 
-  // static removeSong(title){
-  //   const index = this.songs.findIndex(song => song.title === title);
-
-  // }
+  static removeSong(indexSong) {
+    return this.songs.splice(indexSong, 1);
+  }
 }
 
 export default SongModel;
