@@ -8,7 +8,7 @@ export const errorMiddleware = (error, req, res, next) => {
   }
 
   if (error instanceof ResponseError) {
-    res.error(error.message, error.code).end();
+    res.error(error.message, error.code, error.data, error.errors).end();
   } else {
     logger.error(error);
     res.internalServerError().end();

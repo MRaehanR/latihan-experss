@@ -1,10 +1,14 @@
 export const response = (req, res, next) => {
   res.success = (message, data = [], code = 200) => {
-    return res.status(code).json({ success: true, code, message, data });
+    return res
+      .status(code)
+      .json({ success: true, code, message, data, errors: [] });
   };
 
-  res.error = (message, code = 400, data = []) => {
-    return res.status(code).json({ success: false, code, message, data });
+  res.error = (message, code = 400, data = [], errors = []) => {
+    return res
+      .status(code)
+      .json({ success: false, code, message, data, errors });
   };
 
   res.internalServerError = () => {

@@ -1,4 +1,9 @@
 import SongService from "../services/song-service.js";
+import validate from "../validations/index.js";
+import {
+  addSongValidation,
+  removeSongValidation,
+} from "../validations/song-validation.js";
 
 class SongController {
   static getSongs(req, res, next) {
@@ -13,7 +18,10 @@ class SongController {
 
   static addSong(req, res, next) {
     try {
-      const { title, artists, playedCount } = req.body;
+      const { title, artists, playedCount } = validate(
+        addSongValidation,
+        req.body
+      );
       const song = SongService.addSong(title, artists, playedCount);
 
       res.success("Success Add Song", song);
@@ -24,7 +32,7 @@ class SongController {
 
   static removeSong(req, res, next) {
     try {
-      const title = req.query.title;
+      const { title } = validate(removeSongValidation, req.query);
       const removedSong = SongService.removeSong(title);
 
       res.success("Success remove song", removedSong);
